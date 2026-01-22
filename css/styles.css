@@ -44,7 +44,18 @@
   }
 }
 
-/*=============== BASE ===============*/
+.change-theme,
+.profile__border,
+.profile__perfil-container,
+.profile__name,
+.profile__profession,
+.profile__social,
+.profile__info-group,
+.profile__buttons,
+.filters__content,
+.filters {
+    visibility: hidden;
+}
 * {
   box-sizing: border-box;
   padding: 0;
@@ -86,6 +97,22 @@ img {
   color: var(--title-color);
   cursor: pointer;
   transition: .3s;
+}
+
+.theme-animate {
+  animation: theme-rotation 0.5s ease-in-out;
+}
+
+@keyframes theme-rotation {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.3);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
 }
 
 .change-theme:hover {
