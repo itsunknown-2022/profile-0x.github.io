@@ -40,12 +40,21 @@ if (selectedTheme) {
 
 // Activate / deactivate the theme manually with the button
 themeButton.addEventListener('click', () => {
+    // Add animation class
+    themeButton.classList.add('theme-animate')
+    
     // Add or remove the dark / icon theme
     document.body.classList.toggle(darkTheme)
     themeButton.classList.toggle(iconTheme)
+    
     // We save the theme and the current icon that the user chose
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
+
+    // Remove animation class after it's done
+    setTimeout(() => {
+        themeButton.classList.remove('theme-animate')
+    }, 500)
 })
 
 /*=============== SCROLL REVEAL ANIMATION ===============*/
@@ -54,11 +63,12 @@ const sr = ScrollReveal({
     distance: '60px',
     duration: 2500,
     delay: 500,
-    reset: false // Keep the animation after it reveal once
+    reset: false
 })
 
-sr.reveal(`.change-theme`, {origin: 'right', distance: '0px', delay: 100})
-sr.reveal(`.profile__border`, {origin: 'center', scale: 0.5, duration: 1500})
+sr.reveal(`.change-theme`, {origin: 'right', distance: '20px', delay: 1000, opacity: 0, duration: 2000, scale: 0.8})
+sr.reveal(`.profile__border`, {origin: 'center', scale: 0.5, duration: 1500, opacity: 0})
+sr.reveal(`.profile__perfil-container`, {origin: 'center', scale: 0.8, duration: 1500, delay: 200, opacity: 0})
 sr.reveal(`.profile__name`, {delay: 500})
 sr.reveal(`.profile__profession`, {delay: 600})
 sr.reveal(`.profile__social`, {delay: 700})
